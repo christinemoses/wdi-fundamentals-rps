@@ -45,42 +45,60 @@ function getWinner(playerMove,computerMove) {
 
     if (playerMove === 'rock' && computerMove === 'rock') {
         winner = 'tie';
-    } 
+    }
     else if (playerMove === 'rock' && computerMove === 'scissors') {
         winner = 'player';
-    } 
+    }
     else if (playerMove === 'rock' && computerMove === 'paper') {
         winner = 'computer';
-    } 
+    }
     else if (playerMove === 'paper' && computerMove === 'rock') {
         winner = 'player';
-    } 
+    }
     else if (playerMove === 'paper' && computerMove === 'scissors') {
         winner = 'computer';
-    } 
+    }
     else if (playerMove === 'paper' && computerMove === 'paper') {
         winner = 'tie';
-    } 
+    }
     else if (playerMove === 'scissors' && computerMove === 'rock') {
         winner = 'computer';
-    } 
+    }
     else if (playerMove === 'scissors' && computerMove === 'scissors') {
         winner = 'tie';
-    } 
+    }
     else if (playerMove === 'scissors' && computerMove === 'paper') {
-        winner = 'player';   
+        winner = 'player';
     }
 
     return winner;
     }
 
 
+
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
-    return [playerWins, computerWins];
-}
 
+while(playerWins < 5 && computerWins < 5) {
+    var playerMove = getPlayerMove();
+    var computerMove = getComputerMove();
+    var winner = getWinner(playerMove, computerMove);
+
+     if (winner === 'player') {
+         playerWins = playerWins + 1;
+    }
+     else if (winner === 'computer') {
+         computerWins = computerWins + 1;
+    }
+     else {
+         computerWins = computerWins + 0;
+         playerWins = playerWins + 0;
+    }
+     console.log("Player plays", playerMove,": Computer plays", computerMove);
+     console.log("The winner is", getWinner(playerMove, computerMove));
+    }
+     return ["player score count", playerWins, "computer score count", computerWins];
+}
+playToFive();
